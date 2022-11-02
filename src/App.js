@@ -3,9 +3,13 @@ import "./App.css";
 import { HomePage } from "./components/Home.page";
 import { RqSuperHero } from "./components/RqSuperheroes.page";
 import { Superhero } from "./components/Superheroes.page";
+import {QueryClientProvider,QueryClient} from "react-query"
+
+const client = new QueryClient() ;
 
 function App() {
   return (
+    <QueryClientProvider client={client}>
     <div className="App">
       <nav>
         <ul>
@@ -29,6 +33,7 @@ function App() {
       </Routes>
    
     </div>
+    </QueryClientProvider>
   );
 }
 
