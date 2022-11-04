@@ -16,6 +16,7 @@ export const RqSuperHero = () => {
         //refetchOnWindowFocus: false
         //refetchInterval: 1000 ,// refetch data every 1 second (but not in case when window lose focus)
         //refetchIntervalInBackground: true // refetchInterval works also for losed window focus case 
+        enabled: false //pause fetching 
     });
 
 
@@ -23,13 +24,14 @@ export const RqSuperHero = () => {
         return <h2>{error.message}</h2>
     }
 
-    if(isLoading) {
+    if(isLoading || isFetching) {
         return <h2>Loading...</h2>
     }
     
     return (
         <>
-            <h2 onClick={() => refetch()}>React Query Super Heroes</h2>
+            <h2>React Query Super Heroes</h2>
+            <button onClick={()=> refetch()}>Fetch heroes</button> 
             {data?.data.map(hero => {
                 return <div key={hero.id}>{hero.name}</div>
             })}
