@@ -1,4 +1,5 @@
 import axios from "axios"
+import { useState } from "react";
 import { useQuery } from "react-query"
 
 
@@ -9,8 +10,12 @@ const fetchSuperHeroes = () => {
 
 export const RqSuperHero = () => {
 
+    const [int,setInt] = useState(3000)
+
     const onSuccess = (data) => {
-        console.log(data);
+        if(data.data.length >= 4) {
+            setInt(false)
+        }
         console.log("side effect after data fetching");
     }
 
@@ -24,7 +29,7 @@ export const RqSuperHero = () => {
        // staleTime: 30000, // this says that there is no need to refetch data during 5 minutes seconds default 0
         //refetchOnMount: false, //dont refetch data if component rerendered
         //refetchOnWindowFocus: false
-        //refetchInterval: 1000 ,// refetch data every 1 second (but not in case when window lose focus)
+        refetchInterval: int ,// refetch data every 1 second (but not in case when window lose focus)
         //refetchIntervalInBackground: true // refetchInterval works also for losed window focus case 
         //enabled: false //pause fetching
         onSuccess,
