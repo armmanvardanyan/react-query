@@ -9,6 +9,16 @@ const fetchSuperHeroes = () => {
 
 export const RqSuperHero = () => {
 
+    const onSuccess = (data) => {
+        console.log(data);
+        console.log("side effect after data fetching");
+    }
+
+    const onError = (err) => {
+        console.log(err);
+        console.log("side effect after error");
+    }
+
     const {data,isLoading,isError,error, isFetching, refetch} = useQuery("super-heroes", fetchSuperHeroes,{
        //cacheTime: 5000, // this says cache data during 5 seconds then data will be garbage collected default 30000 (5 minutes)
        // staleTime: 30000, // this says that there is no need to refetch data during 5 minutes seconds default 0
@@ -16,7 +26,9 @@ export const RqSuperHero = () => {
         //refetchOnWindowFocus: false
         //refetchInterval: 1000 ,// refetch data every 1 second (but not in case when window lose focus)
         //refetchIntervalInBackground: true // refetchInterval works also for losed window focus case 
-        enabled: false //pause fetching 
+        //enabled: false //pause fetching
+        onSuccess,
+        onError 
     });
 
 
