@@ -17,10 +17,11 @@ export const useSuperHeroesData = ( onSuccess,onError   ) => {
          //enabled: false //pause fetching
          onSuccess,
          onError ,
+         /*
          select: (data) => {
              // returned value will override data value in useQuery
              return data.data.map(hero => hero.name.toUpperCase())
-         }
+         }*/
      });
 
 

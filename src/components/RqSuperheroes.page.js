@@ -1,5 +1,6 @@
 import { useState } from "react";
 import { useQuery } from "react-query"
+import { Link } from "react-router-dom";
 import { useSuperHeroesData } from "../hooks/useSuperHerosData";
 
 
@@ -12,7 +13,7 @@ export const RqSuperHero = () => {
 
     const onSuccess = (data) => {
         console.log(data);
-        if(data.length >= 4) {
+        if(data?.data.length >= 4) {
             //setInt(false)
         }
         console.log("side effect after data fetching");
@@ -39,9 +40,14 @@ export const RqSuperHero = () => {
         <>
             <h2>React Query Super Heroes</h2>
             <button onClick={()=> refetch()}>Fetch heroes</button> 
-            {data?.map(hero => {
-                return <div key={hero}>{hero}</div>
+            {data?.data.map(hero => {
+                return <div key={hero.id}>
+                    <Link to={`/rqsuperheroes/${hero.id}`}>{hero.name}</Link>
+                </div>
             })}
+            {/*data?.map(hero => {
+                return <div key={hero}>{hero}</div>
+            })*/}
         </>
     )
 }
