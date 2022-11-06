@@ -10,11 +10,12 @@ const fetchSuperHeroes = () => {
 
 export const RqSuperHero = () => {
 
-    const [int,setInt] = useState(3000)
+    //const [int,setInt] = useState(3000)
 
     const onSuccess = (data) => {
-        if(data.data.length >= 4) {
-            setInt(false)
+        console.log(data);
+        if(data.length >= 4) {
+            //setInt(false)
         }
         console.log("side effect after data fetching");
     }
@@ -29,11 +30,15 @@ export const RqSuperHero = () => {
        // staleTime: 30000, // this says that there is no need to refetch data during 5 minutes seconds default 0
         //refetchOnMount: false, //dont refetch data if component rerendered
         //refetchOnWindowFocus: false
-        refetchInterval: int ,// refetch data every 1 second (but not in case when window lose focus)
+        //refetchInterval: int ,// refetch data every 1 second (but not in case when window lose focus)
         //refetchIntervalInBackground: true // refetchInterval works also for losed window focus case 
         //enabled: false //pause fetching
         onSuccess,
-        onError 
+        onError ,
+        select: (data) => {
+            // returned value will override data value in useQuery
+            return data.data.map(hero => hero.name.toUpperCase())
+        }
     });
 
 
@@ -49,8 +54,8 @@ export const RqSuperHero = () => {
         <>
             <h2>React Query Super Heroes</h2>
             <button onClick={()=> refetch()}>Fetch heroes</button> 
-            {data?.data.map(hero => {
-                return <div key={hero.id}>{hero.name}</div>
+            {data?.map(hero => {
+                return <div key={hero}>{hero}</div>
             })}
         </>
     )
