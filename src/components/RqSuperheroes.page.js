@@ -12,7 +12,6 @@ export const RqSuperHero = () => {
     //const [int,setInt] = useState(3000)
 
     const onSuccess = (data) => {
-        console.log(data);
         if(data?.data.length >= 4) {
             //setInt(false)
         }
