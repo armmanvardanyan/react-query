@@ -7,6 +7,7 @@ import {QueryClientProvider,QueryClient} from "react-query"
 import {ReactQueryDevtools} from "react-query/devtools"
 import { RqSuperHeroPage } from "./components/RqSuperHero";
 import { ParallelQUeries } from "./components/ParalellQueries.page";
+import { DinamicParallelQUeries } from "./components/DinamicParalellQueries.page";
 
 const client = new QueryClient() ;
 
@@ -28,12 +29,16 @@ function App() {
           <li>
             <Link to="/parallel-queries">Parallel Queries</Link>
           </li>
+          <li>
+            <Link to="/rq-dinamic-parallel-queries">RQ Dinamic Parallel Queries</Link>
+          </li>
         </ul>
       </nav>
 
       <Routes>
           <Route index element={<HomePage />} />
           <Route path="/parallel-queries" element={<ParallelQUeries />} />
+          <Route path="/rq-dinamic-parallel-queries" element={<DinamicParallelQUeries heroIds={[1,3]}/>} />
           <Route path="/rqsuperheroes" element={<RqSuperHero />} />
           <Route path="/rqsuperheroes/:heroId" element= {<RqSuperHeroPage/>} />
           <Route path="/superheroes" element={<Superhero />} />
