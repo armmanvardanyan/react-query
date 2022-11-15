@@ -28,7 +28,7 @@ export const RqSuperHero = () => {
 
     const {data,isError,isLoading,isFetching,error,refetch} = useSuperHeroesData(onSuccess,onError)
 
-    const {data: mutationData, mutate,isSuccess} = useAddSuperHeroDAta()
+    const {data: mutationData, mutate, isSuccess} = useAddSuperHeroDAta()
 
 
     const addHeroHandler = (e) => {

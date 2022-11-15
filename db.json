@@ -16,29 +16,19 @@
       "alterEgo": "Princess Diana"
     },
     {
-      "name": "Test data",
-      "alterEgo": "asdff",
+      "name": "ss",
+      "alterEgo": "ss",
       "id": 4
     },
     {
-      "name": "data",
-      "alterEgo": "data",
+      "name": "test",
+      "alterEgo": "testtt",
       "id": 5
     },
     {
-      "name": "data",
-      "alterEgo": "data",
+      "name": "d",
+      "alterEgo": "s",
       "id": 6
-    },
-    {
-      "name": "data",
-      "alterEgo": "data",
-      "id": 7
-    },
-    {
-      "name": "data",
-      "alterEgo": "data",
-      "id": 8
     }
   ],
   "friends": [
