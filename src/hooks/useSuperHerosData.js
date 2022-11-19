@@ -34,7 +34,18 @@ export const useSuperHeroesData = ( onSuccess,onError   ) => {
 export const useAddSuperHeroDAta = () => {
     const queryClient = useQueryClient()
     return useMutation(addSuperHero,{
-        onSuccess: () => queryClient.invalidateQueries("super-heroes")
+        onSuccess: (data) => {
+            //queryClient.invalidateQueries("super-heroes")
+            
+            // setQueryData updating query cache , oldQueryData is cached old values
+            // it helps to dont send additional get request 
+             queryClient.setQueryData("super-heroes",(oldQueryData) => {
+                return {
+                    ...oldQueryData,
+                    data: [...oldQueryData.data,data.data]
+                }
+             })   
+        }
     });
 
 }
